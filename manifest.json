@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Volcon",
+  "description": "Raise or fade media volume to a level you choose.",
+  "version": "1.0.0",
+  "permissions": ["activeTab", "storage"],
+  "action": {
+    "default_title": "Volcon",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["volume-controller.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

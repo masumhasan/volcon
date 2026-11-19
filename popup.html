@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Volcon</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <h1>Volcon</h1>
+      <label for="target">
+        Target volume
+        <output id="target-output">70%</output>
+      </label>
+      <input id="target" type="range" min="0" max="100" value="70">
+
+      <label for="duration">
+        Fade duration
+        <output id="duration-output">2 seconds</output>
+      </label>
+      <input id="duration" type="range" min="0" max="30" value="2" step="0.5">
+
+      <div class="actions">
+        <button id="raise" type="button">Raise</button>
+        <button id="fade" type="button">Fade</button>
+      </div>
+      <p id="status" role="status" aria-live="polite"></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
