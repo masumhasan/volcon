@@ -1,0 +1,254 @@
+/* Design tokens come from the Stitch project "Browser Extension Design" (dark first). */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/inter-latin.woff2') format('woff2');
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #111317;
+  --surface: #171a21;
+  --surface-high: #282a2e;
+  --surface-low: #0c0e12;
+  --text: #e2e2e8;
+  --text-muted: #c9c4d8;
+  --outline: #938ea1;
+  --outline-variant: #484555;
+  --primary: #947dff;
+  --primary-soft: #cabeff;
+  --on-primary: #31009a;
+  --teal: #2dd4bf;
+  --amber: #ffb020;
+  --amber-bg: rgba(196, 132, 0, 0.2);
+  --danger: #ffb4ab;
+  --shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
+    --bg: #f6f7fb;
+    --surface: #ffffff;
+    --surface-high: #e9eaf2;
+    --surface-low: #eef0f6;
+    --text: #12141a;
+    --text-muted: #4a4455;
+    --outline: #6f6a7c;
+    --outline-variant: #c9c4d8;
+    --primary: #5b3fe0;
+    --primary-soft: #4816cb;
+    --on-primary: #ffffff;
+    --teal: #0f766e;
+    --amber: #a15c00;
+    --amber-bg: rgba(255, 176, 32, 0.22);
+    --danger: #ba1a1a;
+    --shadow: 0 1px 6px rgba(20, 20, 40, 0.12);
+  }
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-high: #e9eaf2;
+  --surface-low: #eef0f6;
+  --text: #12141a;
+  --text-muted: #4a4455;
+  --outline: #6f6a7c;
+  --outline-variant: #c9c4d8;
+  --primary: #5b3fe0;
+  --primary-soft: #4816cb;
+  --on-primary: #ffffff;
+  --teal: #0f766e;
+  --amber: #a15c00;
+  --amber-bg: rgba(255, 176, 32, 0.22);
+  --danger: #ba1a1a;
+  --shadow: 0 1px 6px rgba(20, 20, 40, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.small {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-soft);
+  outline-offset: 2px;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.chip {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: var(--surface-high);
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--surface-high);
+  color: var(--text);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--surface-high);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.12);
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.switch-track {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--surface-high);
+  transition: background-color 150ms;
+}
+
+.switch-track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 150ms;
+}
+
+.switch input:checked + .switch-track {
+  background: var(--teal);
+}
+
+.switch input:checked + .switch-track::after {
+  transform: translateX(16px);
+}
+
+.switch input:focus-visible + .switch-track {
+  outline: 2px solid var(--primary-soft);
+  outline-offset: 2px;
+}
+
+.switch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

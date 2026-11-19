@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Volume Guard</title>
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">
+        <img class="brand-logo" src="icons/icon-48.png" width="32" height="32" alt="" />
+        <span class="brand-name" data-i18n="extName"></span>
+        <span class="chip" id="version"></span>
+      </div>
+      <div class="header-actions">
+        <label class="switch">
+          <input id="master-toggle" type="checkbox" role="switch" data-i18n-aria="toggleMaster" />
+          <span class="switch-track" aria-hidden="true"></span>
+        </label>
+        <button
+          id="open-options"
+          class="icon-btn"
+          type="button"
+          data-i18n-aria="popupSettings"
+          data-i18n-title="popupSettings"
+        >
+          <svg class="icon" aria-hidden="true"><use href="icons.svg#tune" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="card source-card" aria-labelledby="site-name">
+        <div class="source-main">
+          <span class="source-icon">
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#film" /></svg>
+          </span>
+          <div class="text-stack">
+            <span class="source-name" id="site-name"></span>
+            <span class="muted small" id="site-hint"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="status" id="status" data-kind="idle">
+        <div class="status-main">
+          <svg class="icon" aria-hidden="true"><use href="icons.svg#wave" /></svg>
+          <span id="status-text" role="status" aria-live="polite"></span>
+        </div>
+        <span class="gain-pill" id="status-gain" hidden></span>
+      </section>
+
+      <section class="card site-card" id="site-card" hidden>
+        <div class="text-stack">
+          <span class="source-name" id="site-toggle-label"></span>
+          <span class="muted small" id="site-toggle-hint"></span>
+        </div>
+        <label class="switch">
+          <input
+            id="site-toggle"
+            type="checkbox"
+            role="switch"
+            aria-labelledby="site-toggle-label"
+          />
+          <span class="switch-track" aria-hidden="true"></span>
+        </label>
+      </section>
+
+      <section class="card dial-card" aria-labelledby="dial-title">
+        <div class="dial">
+          <svg class="dial-svg" viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="dial-ticks" cx="100" cy="100" r="88" />
+            <circle class="dial-track" cx="100" cy="100" r="76" />
+            <circle class="dial-arc" id="dial-arc" cx="100" cy="100" r="76" />
+          </svg>
+          <div class="dial-readout" aria-hidden="true">
+            <span class="label-xs" id="dial-title" data-i18n="popupTarget"></span>
+            <div><span class="display" id="target-value"></span><span class="unit">%</span></div>
+            <span class="lufs-chip">
+              <svg class="icon" aria-hidden="true"><use href="icons.svg#tune" /></svg>
+              <span id="target-lufs"></span>
+            </span>
+          </div>
+          <button
+            id="btn-decrease"
+            class="step step-left"
+            type="button"
+            data-i18n-aria="popupDecrease"
+            data-i18n-title="popupDecrease"
+          >
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#minus" /></svg>
+          </button>
+          <button
+            id="btn-increase"
+            class="step step-right"
+            type="button"
+            data-i18n-aria="popupIncrease"
+            data-i18n-title="popupIncrease"
+          >
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#plus" /></svg>
+          </button>
+        </div>
+        <div class="range-row">
+          <span data-i18n="popupWhisper"></span>
+          <input id="target-range" type="range" step="1" data-i18n-aria="popupTarget" />
+          <span data-i18n="popupMaxCinema"></span>
+        </div>
+      </section>
+
+      <section class="card meters" aria-labelledby="meters-title">
+        <div class="meters-head">
+          <span class="meters-title">
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#bars" /></svg>
+            <span id="meters-title" data-i18n="popupMeters"></span>
+          </span>
+        </div>
+        <div class="meter-area" aria-hidden="true">
+          <div class="target-line" id="target-line"></div>
+          <div>
+            <div class="meter-label">
+              <span data-i18n="popupIncoming"></span>
+              <span class="is-amber" id="source-db"></span>
+            </div>
+            <div class="meter"><div class="meter-bar is-source" id="source-bar"></div></div>
+          </div>
+          <div>
+            <div class="meter-label">
+              <span data-i18n="popupBalanced"></span>
+              <span class="is-teal" id="output-db"></span>
+            </div>
+            <div class="meter"><div class="meter-bar is-output" id="output-bar"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="profile-title">
+        <div class="presets-head">
+          <span id="profile-title" data-i18n="popupProfile"></span>
+        </div>
+        <div class="presets">
+          <button class="preset" type="button" data-preset="night" aria-pressed="false">
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#moon" /></svg>
+            <span data-i18n="presetNight"></span>
+          </button>
+          <button class="preset" type="button" data-preset="normal" aria-pressed="false">
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#film" /></svg>
+            <span data-i18n="presetNormal"></span>
+          </button>
+          <button class="preset" type="button" data-preset="cinema" aria-pressed="false">
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#screen" /></svg>
+            <span data-i18n="presetCinema"></span>
+          </button>
+          <button class="preset" type="button" data-preset="custom" aria-pressed="false">
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#tune" /></svg>
+            <span data-i18n="presetCustom"></span>
+          </button>
+        </div>
+      </section>
+
+      <div class="footer">
+        <button class="btn" id="pause-button" type="button">
+          <svg class="icon" aria-hidden="true"><use href="icons.svg#pause" /></svg>
+          <span id="pause-label"></span>
+        </button>
+        <div class="shortcut">
+          <svg class="icon" aria-hidden="true"><use href="icons.svg#keyboard" /></svg>
+          <span id="shortcut"></span>
+        </div>
+      </div>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

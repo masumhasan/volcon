@@ -1,0 +1,139 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 8px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+}
+
+.page-header p {
+  margin: 0;
+}
+
+.save-status {
+  margin: 0 0 0 auto;
+  min-width: 64px;
+  color: var(--teal);
+  font-weight: 600;
+  text-align: right;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 8px 16px 48px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.section h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.section p {
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.field-head output {
+  color: var(--primary-soft);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.range-ends {
+  display: flex;
+  justify-content: space-between;
+}
+
+.warning {
+  color: var(--amber);
+  font-weight: 500;
+}
+
+select {
+  width: 100%;
+  max-width: 240px;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  background: var(--surface-high);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+kbd {
+  padding: 4px 10px;
+  border: 1px solid var(--outline-variant);
+  border-radius: 6px;
+  background: var(--surface-high);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sites {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sites li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 4px 2px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-low);
+}
+
+.sites .site-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+[hidden] {
+  display: none !important;
+}

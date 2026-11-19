@@ -1,0 +1,118 @@
+{
+  "extName": { "message": "Volume Guard" },
+  "extDescription": {
+    "message": "Set your volume once. Volume Guard auto-lowers loud scenes and raises quiet dialogue so movies stay at your level."
+  },
+  "commandToggle": { "message": "Turn Volume Guard on or off" },
+
+  "toggleMaster": { "message": "Turn Volume Guard on or off" },
+  "popupSettings": { "message": "Settings" },
+  "popupTarget": { "message": "Target volume" },
+  "popupTargetValue": {
+    "message": "$VALUE$ percent",
+    "placeholders": { "value": { "content": "$1" } }
+  },
+  "popupDecrease": { "message": "Decrease target volume" },
+  "popupIncrease": { "message": "Increase target volume" },
+  "popupWhisper": { "message": "Whisper" },
+  "popupMaxCinema": { "message": "Max cinema" },
+  "popupMeters": { "message": "Live loudness" },
+  "popupIncoming": { "message": "Incoming" },
+  "popupBalanced": { "message": "Balanced output" },
+  "popupProfile": { "message": "Profile" },
+  "presetNight": { "message": "Night" },
+  "presetNormal": { "message": "Normal" },
+  "presetCinema": { "message": "Cinema" },
+  "presetCustom": { "message": "Custom" },
+  "popupPause": { "message": "Pause for 15 min" },
+  "popupResume": { "message": "Resume correction" },
+  "shortcutNone": { "message": "No shortcut set" },
+
+  "siteRestricted": { "message": "This page" },
+  "siteRestrictedHint": { "message": "Open a video page to use Volume Guard." },
+  "siteAlways": {
+    "message": "Always on for $HOST$",
+    "placeholders": { "host": { "content": "$1" } }
+  },
+  "siteAlwaysOnHint": { "message": "Runs automatically each time you visit." },
+  "siteAlwaysOffHint": { "message": "Active on this tab. Turn on to keep it on every visit." },
+
+  "statusStable": { "message": "On target" },
+  "statusLowering": { "message": "Taming a loud scene" },
+  "statusRaising": { "message": "Lifting a quiet scene" },
+  "statusSilent": { "message": "Waiting for sound" },
+  "statusOff": { "message": "Volume Guard is off" },
+  "statusPaused": { "message": "Paused for a while" },
+  "statusSiteOff": { "message": "Turned off for this site" },
+  "statusNoMedia": { "message": "No video detected on this page" },
+  "statusArmed": { "message": "Ready — start playback" },
+  "statusBlockedDrm": {
+    "message": "This video is copy-protected, so its audio can't be adjusted. Playback is untouched."
+  },
+  "statusBlockedCors": {
+    "message": "This site blocks access to the video's audio. Playback is untouched."
+  },
+  "statusBlockedInUse": {
+    "message": "The page already controls this video's audio. Playback is untouched."
+  },
+  "statusBlockedUnsupported": {
+    "message": "This kind of video isn't supported. Playback is untouched."
+  },
+  "statusError": { "message": "Something went wrong. Playback is untouched." },
+  "statusRestricted": { "message": "Volume Guard can't run on this page." },
+  "statusNoAccess": { "message": "Volume Guard can't access this page." },
+
+  "optionsTitle": { "message": "Volume Guard settings" },
+  "optionsSubtitle": { "message": "Set it once. Watch in peace." },
+  "optionsSaved": { "message": "Saved" },
+  "optionsTuning": { "message": "Tuning" },
+  "optionsReaction": { "message": "Reaction speed" },
+  "optionsSmooth": { "message": "Smooth" },
+  "optionsInstant": { "message": "Instant" },
+  "optionsReactionHelp": {
+    "message": "Smooth keeps changes gentle. Instant reacts the moment a scene gets loud."
+  },
+  "optionsMaxBoost": { "message": "Maximum boost" },
+  "optionsMaxBoostHelp": {
+    "message": "How much quiet scenes may be turned up. Higher values can amplify background noise."
+  },
+  "optionsBoostWarning": {
+    "message": "A high boost can be uncomfortable and amplify noise. A limiter always protects your ears."
+  },
+  "optionsMaxReduction": { "message": "Maximum reduction" },
+  "optionsMaxReductionHelp": { "message": "How much loud scenes may be turned down." },
+  "optionsLimiter": { "message": "Loud-peak limiter" },
+  "optionsLimiterHelp": { "message": "Catches sudden peaks before they reach your ears." },
+  "optionLow": { "message": "Low" },
+  "optionMedium": { "message": "Medium" },
+  "optionHigh": { "message": "High" },
+  "optionsReset": { "message": "Reset tuning to defaults" },
+  "optionsAppearance": { "message": "Appearance" },
+  "optionsTheme": { "message": "Theme" },
+  "themeSystem": { "message": "Match system" },
+  "themeDark": { "message": "Dark" },
+  "themeLight": { "message": "Light" },
+  "optionsSites": { "message": "Sites" },
+  "optionsSitesHelp": {
+    "message": "Sites where Volume Guard is allowed to run automatically. You can pause or remove any of them."
+  },
+  "optionsNoSites": {
+    "message": "No sites yet. Open a video page and turn on “Always on” in the popup."
+  },
+  "optionsSiteToggle": {
+    "message": "Run on $HOST$",
+    "placeholders": { "host": { "content": "$1" } }
+  },
+  "optionsRemoveSite": { "message": "Remove" },
+  "optionsRemoveSiteFor": {
+    "message": "Remove $HOST$",
+    "placeholders": { "host": { "content": "$1" } }
+  },
+  "optionsShortcut": { "message": "Keyboard shortcut" },
+  "optionsShortcutHelp": { "message": "Turn correction on or off from any page." },
+  "optionsChangeShortcut": { "message": "Change shortcut" },
+  "optionsPrivacy": { "message": "Privacy" },
+  "optionsPrivacyText": {
+    "message": "Audio is analysed on your device and is never recorded, stored or sent anywhere. Volume Guard has no analytics and makes no network requests."
+  }
+}

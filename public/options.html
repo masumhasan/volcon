@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Volume Guard</title>
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <img src="icons/icon-48.png" width="40" height="40" alt="" />
+      <div>
+        <h1 data-i18n="optionsTitle"></h1>
+        <p class="muted" data-i18n="optionsSubtitle"></p>
+      </div>
+      <p class="save-status small" id="save-status" role="status" aria-live="polite"></p>
+    </header>
+
+    <main class="page">
+      <section class="card section" aria-labelledby="tuning-title">
+        <h2 id="tuning-title" data-i18n="optionsTuning"></h2>
+
+        <div class="field">
+          <div class="field-head">
+            <label for="reaction-range" data-i18n="optionsReaction"></label>
+            <output id="reaction-value" for="reaction-range"></output>
+          </div>
+          <input id="reaction-range" type="range" min="0" max="100" step="5" />
+          <div class="range-ends small muted">
+            <span data-i18n="optionsSmooth"></span>
+            <span data-i18n="optionsInstant"></span>
+          </div>
+          <p class="help small muted" data-i18n="optionsReactionHelp"></p>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <label for="boost-range" data-i18n="optionsMaxBoost"></label>
+            <output id="boost-value" for="boost-range"></output>
+          </div>
+          <input id="boost-range" type="range" min="0" max="12" step="1" />
+          <p class="help small muted" data-i18n="optionsMaxBoostHelp"></p>
+          <p class="warning small" id="boost-warning" hidden data-i18n="optionsBoostWarning"></p>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <label for="reduction-range" data-i18n="optionsMaxReduction"></label>
+            <output id="reduction-value" for="reduction-range"></output>
+          </div>
+          <input id="reduction-range" type="range" min="0" max="30" step="1" />
+          <p class="help small muted" data-i18n="optionsMaxReductionHelp"></p>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <label for="limiter-select" data-i18n="optionsLimiter"></label>
+          </div>
+          <select id="limiter-select">
+            <option value="low" data-i18n="optionLow"></option>
+            <option value="medium" data-i18n="optionMedium"></option>
+            <option value="high" data-i18n="optionHigh"></option>
+          </select>
+          <p class="help small muted" data-i18n="optionsLimiterHelp"></p>
+        </div>
+
+        <button class="btn" id="reset-button" type="button" data-i18n="optionsReset"></button>
+      </section>
+
+      <section class="card section" aria-labelledby="appearance-title">
+        <h2 id="appearance-title" data-i18n="optionsAppearance"></h2>
+        <div class="field">
+          <div class="field-head">
+            <label for="theme-select" data-i18n="optionsTheme"></label>
+          </div>
+          <select id="theme-select">
+            <option value="system" data-i18n="themeSystem"></option>
+            <option value="dark" data-i18n="themeDark"></option>
+            <option value="light" data-i18n="themeLight"></option>
+          </select>
+        </div>
+      </section>
+
+      <section class="card section" aria-labelledby="sites-title">
+        <h2 id="sites-title" data-i18n="optionsSites"></h2>
+        <p class="muted small" data-i18n="optionsSitesHelp"></p>
+        <ul class="sites" id="sites-list"></ul>
+        <p class="muted small" id="sites-empty" data-i18n="optionsNoSites"></p>
+      </section>
+
+      <section class="card section" aria-labelledby="shortcut-title">
+        <h2 id="shortcut-title" data-i18n="optionsShortcut"></h2>
+        <p class="muted small" data-i18n="optionsShortcutHelp"></p>
+        <div class="row">
+          <kbd id="shortcut-keys"></kbd>
+          <button
+            class="btn"
+            id="change-shortcut"
+            type="button"
+            data-i18n="optionsChangeShortcut"
+          ></button>
+        </div>
+      </section>
+
+      <section class="card section" aria-labelledby="privacy-title">
+        <h2 id="privacy-title" data-i18n="optionsPrivacy"></h2>
+        <p class="muted" data-i18n="optionsPrivacyText"></p>
+      </section>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>
