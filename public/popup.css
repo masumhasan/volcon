@@ -475,3 +475,23 @@ body {
 [hidden] {
   display: none !important;
 }
+
+.compat-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+}
+
+.compat-card .text-stack > * {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.compat-error {
+  margin: 0;
+  color: var(--danger);
+  font-weight: 500;
+}

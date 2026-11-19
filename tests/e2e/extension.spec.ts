@@ -45,6 +45,23 @@ test('service worker boots and the popup renders without errors', async () => {
   // The popup is itself an extension page, so the extension correctly says it cannot run here.
   await expect(page.locator('#status-text')).toHaveText("Volume Guard can't run on this page.");
 
+  // The service worker answers, and refuses compatibility mode until the user grants it.
+  type Send = (message: unknown) => Promise<unknown>;
+  const send = (message: unknown): Promise<unknown> =>
+    page.evaluate(
+      (m) =>
+        (
+          globalThis as unknown as { chrome: { runtime: { sendMessage: Send } } }
+        ).chrome.runtime.sendMessage(m),
+      message,
+    );
+  expect(await send({ type: 'capture-state', tabId: 1 })).toEqual({ ok: true, active: false });
+  expect(await send({ type: 'capture-start', tabId: 1 })).toEqual({
+    ok: false,
+    reason: 'no-permission',
+  });
+  await expect(page.locator('#compat-card')).toBeHidden();
+
   // Steppers and presets work and persist.
   await page.click('#btn-increase');
   await expect(page.locator('#target-value')).toHaveText('70');

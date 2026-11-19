@@ -12,17 +12,14 @@ export interface HarnessWindow {
 const CONTENT_SCRIPT = readFileSync(join(import.meta.dirname, '../../dist/content.js'), 'utf8');
 
 /**
- * Runs the *real built* content script inside a normal page by faking the few `chrome.*`
- * APIs it touches (default settings, a status port we can read). This exercises the real
- * Web Audio graph in real Chromium without needing extension permissions.
+ * Records the safety limiter the engine creates, so a test can measure what actually
+ * reaches the output (`startOutputSampler`). Must run before the page's scripts.
  */
-export async function installContentScript(page: Page): Promise<void> {
+export async function captureLimiter(page: Page): Promise<void> {
   await page.addInitScript(() => {
-    const w = window as unknown as HarnessWindow & Record<string, unknown>;
+    const w = window as unknown as HarnessWindow;
     w.__statuses = [];
     w.__out = [];
-
-    // Capture the safety limiter so the test can measure what actually reaches the output.
     const proto = BaseAudioContext.prototype;
     // eslint-disable-next-line @typescript-eslint/unbound-method -- invoked with .call(this) below
     const original = proto.createDynamicsCompressor;
@@ -31,7 +28,18 @@ export async function installContentScript(page: Page): Promise<void> {
       w.__limiter = node;
       return node;
     };
+  });
+}
 
+/**
+ * Runs the *real built* content script inside a normal page by faking the few `chrome.*`
+ * APIs it touches (default settings, a status port we can read). This exercises the real
+ * Web Audio graph in real Chromium without needing extension permissions.
+ */
+export async function installContentScript(page: Page): Promise<void> {
+  await captureLimiter(page);
+  await page.addInitScript(() => {
+    const w = window as unknown as HarnessWindow & Record<string, unknown>;
     const noop = (): void => undefined;
     (window as unknown as { chrome: unknown }).chrome = {
       runtime: {

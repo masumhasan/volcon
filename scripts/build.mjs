@@ -14,6 +14,7 @@ const entryPoints = {
   content: 'src/content/index.ts',
   popup: 'src/ui/popup/index.ts',
   options: 'src/ui/options/index.ts',
+  offscreen: 'src/offscreen/index.ts',
 };
 
 const options = {

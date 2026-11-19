@@ -8,13 +8,16 @@ Everything runs locally in your browser. No account, no analytics, no network re
 
 Version 0.1.0 — working MVP for Chrome and Edge (Manifest V3). Not yet published to a store.
 
-| Works                                                                                   | Does not work (yet)                                                               |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Same-origin / blob (MSE) / CORS-enabled `<video>` and `<audio>`, including iframes      | DRM-protected video (Netflix, Prime Video, Disney+, Hotstar premium…) — see below |
-| Target volume, presets (Night / Normal / Cinema), reaction speed, boost/reduction caps  | Cross-origin media served without CORS headers                                    |
-| Per-site "always on", pause for 15 minutes, keyboard shortcut (Alt+Shift+V), dark/light | Firefox / Safari, in-page floating widget, onboarding flow                        |
+| Works                                                                                   | Not built yet                                              |
+| --------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Same-origin / blob (MSE) / CORS-enabled `<video>` and `<audio>`, including iframes      | Firefox / Safari                                           |
+| Target volume, presets (Night / Normal / Cinema), reaction speed, boost/reduction caps  | In-page floating widget, onboarding flow, A/B compare      |
+| Per-site "always on", pause for 15 minutes, keyboard shortcut (Alt+Shift+V), dark/light | Dialogue-aware boosting, store listing                     |
+| **Compatibility mode** for DRM / cross-origin video (experimental, see below)           |                                                            |
 
-**DRM and CORS media:** browsers hand Web Audio _silence_ for these, and attaching cannot be undone. Volume Guard therefore detects them and leaves playback completely untouched (the popup says why). Supporting protected streams needs a different capture path (`chrome.tabCapture` through an offscreen document) and is the main planned next step.
+**DRM and CORS media:** browsers hand Web Audio _silence_ for these, and attaching cannot be undone. In normal mode Volume Guard therefore detects them and leaves playback completely untouched (the popup says why). For those pages the popup offers **Compatibility mode**: it captures the whole tab's audio (`chrome.tabCapture`), levels it in an offscreen document and plays it back. It asks for two extra permissions (`tabCapture`, `offscreen`) only when you turn it on, and may add a small delay to the sound.
+
+> Compatibility mode is **experimental**. Its levelling is tested in automation, but Chrome's tab-capture handoff and behaviour on real DRM sites (Netflix, Prime Video, Disney+, Hotstar) must be verified by hand: follow [docs/qa.md](docs/qa.md).
 
 ## Install (development)
 

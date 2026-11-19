@@ -6,4 +6,5 @@ Volume Guard analyses the audio of videos you watch **on your device only**.
 - The extension makes no network requests and contains no analytics, telemetry or advertising.
 - It stores only your settings (target volume, preset, limits, theme) and the hostnames of sites where you turned it on, using your browser's extension storage. If you are signed in to your browser's sync, the browser may sync these settings between your devices.
 - It does not read page content, video titles or your browsing history. A site's hostname is used only to apply your per-site choice.
+- **Compatibility mode** (only if you turn it on for a tab, after a permission prompt) captures that tab's audio so it can be levelled. The audio stays in memory on your device, is played back to you, and is never recorded, stored or sent anywhere. Turning it off, closing the tab or reloading stops the capture.
 - Optional site access is requested per site, only when you choose "Always on", and you can remove it at any time from the options page or your browser's extension settings.
